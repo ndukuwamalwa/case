@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Superior Defence: Register</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="assets/css/app.css">
+	<script type="module" src="app/app.js"></script>
+</head>
+<body>
+	<div class="loader"></div>
+	<div class="container">
+		<div id="header">
+			<h1>Superior Defense</h1>
+		</div>
+		<div id="nav">
+			<ol id="main-menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="register.html">Register</a></li>
+				<li><a href="login.html">Login</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ol>
+		</div>
+		<div id="forms">
+			<div class="notification">
+				<div>
+					<h3></h3>
+					<p></p>
+				</div>
+				<div>
+					<i class="fa fa-close"></i>
+				</div>
+			</div>
+			<form class="form" id="login-form">
+				<div>
+					<h2>Login</h2>
+				</div>
+				<section>
+					<fieldset>
+						<label for="username">Username<span class="required">*</span></label>
+						<input type="email" name="username" id="username" required autofocus autocomplete="Off">
+					</fieldset>
+					<fieldset>
+						<label for="password">Password<span class="required">*</span></label>
+						<input type="password" name="password" id="password" required autocomplete="Off">
+					</fieldset>
+				</section>
+				<section>
+					<p id="response-msg"></p>
+				</section>
+				<section>
+					<fieldset>
+						<input type="submit" name="login" value="login">
+					</fieldset>
+				</section>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

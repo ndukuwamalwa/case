@@ -1,0 +1,12 @@
+{
+    "name": "hekima/hekima",
+    "description": "MIS system",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Justin Wamalwa",
+            "email": "justinwamalwa3@gmail.com"
+        }
+    ],
+    "require": {}
+}

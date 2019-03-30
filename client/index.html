@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Client Portal</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../assets/css/app.css">
+	<script type="module" src="../app/app.js"></script>
+	<script type="module" src="../app/client.js"></script>
+</head>
+<body>
+	<button id="logout"><i class="fa fa-sign-out"></i>Logout</button>
+	<style type="text/css">
+		:root{
+			--theme-color: rgba(0,0,0,.8);
+		}
+	</style>
+	<div class="loader"></div>
+	<div class="container">
+		<div id="admin-menu">
+			<div id="admin-profile">
+				<h2>Profile</h2>
+				<ol class="menu-list">
+					<li><a href="#dashboard" id="dash"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+					<li><a href="#notifications" id="new-notifications"><i class="fa fa-bell"></i>Notifications <b id="noficationCount"></b></a></li>
+					<li><a href="#view-profile"><i class="fa fa-eye"></i>View profile</a></li>
+				</ol>
+			</div>
+			<div id="case-actions">
+				<h2>Cases</h2>
+				<ol class="menu-list">
+					<li><a href="#apply-case"><i class="fa fa-pencil"></i>Apply</a></li>
+					<li><a href="#applied-cases"><i class="fa fa-edit"></i>Applied cases</a></li>
+					<li><a href="#view-case"><i class="fa fa-eye"></i>View case</a></li>
+					<li><a href="#cancel-case"><i class="fa fa-close"></i>Cancel case</a></li>
+					<li><a href="#add-witnesses"><i class="fa fa-plus"></i>Add witness</a></li>
+					<li><a href="#view-witnesses"><i class="fa fa-eye"></i>View witnesses</a></li>
+					<li><a href="#finalize-case"><i class="fa fa-check"></i>Withdraw case</a></li>
+					<li><a href="#view-proceedings"><i class="fa fa-eye"></i>Court proceedings</a></li>
+				</ol>
+			</div>
+			<div id="payment-actions">
+				<h2>Payments</h2>
+				<ol class="menu-list">
+					<li><a href="#view-costs"><i class="fa fa-eye"></i>View costs</a></li>
+					<li><a href="#pay"><i class="fa fa-dollar"></i>Pay</a></li>
+					<li><a href="#case-payment"><i class="fa fa-check"></i>Case payments</a></li>
+				</ol>
+			</div>
+			<div id="arranged-meetings-action">
+				<h2>Meetings</h2>
+				<ol class="menu-list">
+					<li><a href="#arranged-meetings"><i class="fa fa-eye"></i>Arranged meetings</a></li>
+				</ol>
+			</div>
+		</div>
+		<div id="top-nav">
+			<h3>Supreme Defense</h3>
+			<h5>Client Portal</h5>
+		</div>
+		<div id="content">
+			<div class="notification">
+				<div>
+					<h3></h3>
+					<p></p>
+				</div>
+				<div>
+					<i class="fa fa-close"></i>
+				</div>
+			</div>
+			<div id="dashboard">
+				<table>
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Applied cases</td>
+							<td id="stat-appliedCases"></td>
+						</tr>
+						<tr>
+							<td>Rejected cases</td>
+							<td id="stat-rejectedCases"></td>
+						</tr>
+						<tr>
+							<td>Won cases</td>
+							<td id="stat-wonCases"></td>
+						</tr>
+						<tr>
+							<td>Lost cases</td>
+							<td id="stat-lostCases"></td>
+						</tr>
+						<tr>
+							<td>Appealed cases</td>
+							<td id="stat-appealedCases"></td>
+						</tr>
+						<tr>
+							<td>Withdrawn cases</td>
+							<td id="stat-withdrawnCases"></td>
+						</tr>
+						<tr>
+							<td>Awaiting meetings</td>
+							<td id="stat-awaitingMeetings"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="notifications">
+				
+			</div>
+			<div id="view-profile">
+				<form id="view-profile-form">
+					<div>
+						<h2>Profile</h2>
+					</div>
+					<button id="view-profile-btn">View</button>
+				</form>
+			</div>
+			<div id="apply-case">
+				<form id="apply-case-search-form" novalidate>
+					<div>
+						<h2>Case application form</h2>
+						<p>Enter keywords to search for advocate.</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+				<form id="apply-case-form" method="POST">
+					<div>
+						<p>All fields marked <span class="required">*</span> are mandatory.</p>
+					</div>
+					<section>
+						<fieldset>
+							<label for="advocate-apply">Advocate ID</label>
+							<input type="text" name="advocateID" required readonly id="advocate-apply">
+						</fieldset>
+						<fieldset>
+							<label for="caseTitle-apply">Case Title</label>
+							<input type="text" name="caseTitle" id="caseTitle-apply" required>
+						</fieldset>
+						<fieldset>
+							<label for="caseType-apply">Case type</label>
+							<input list="caseTypes" name="caseType" id="caseType-apply" required>
+							<datalist id="caseTypes">
+								<option value="Robery & Theft">Robery & Theft</option>
+								<option value="Rape">Rape</option>
+								<option value="Divorce">Divorce</option>
+								<option value="Economic Crimes">Economic Crimes</option>
+								<option value="Murder & Manslaughter">Murder & Manslaughter</option>
+								<option value="Juvenile cases">Juvenile cases</option>
+							</datalist>
+						</fieldset>
+						<fieldset>
+							<label for="courtName-apply">Court name</label>
+							<input type="text" name="courtName" required id="courtName-apply">
+						</fieldset>
+						<fieldset>
+							<label for="firstHearing-apply">Date of First Hearing</label>
+							<input type="date" name="firstHearing" required id="firstHearing-apply">
+						</fieldset>
+						<fieldset>
+							<label for="description-apply">Notes about the case</label>
+							<textarea name="description" required id="description-apply"></textarea>
+						</fieldset>
+					</section>
+					<section>
+						<fieldset>
+							<input type="submit" name="apply-case" value="apply">
+						</fieldset>
+					</section>
+				</form>
+			</div>
+			<div id="applied-cases">
+				<form id="applied-case-form">
+					<div>
+						<h2>Applied cases</h2>
+					</div>
+					<button id="applied-case-btn">View cases.</button>
+				</form>
+			</div>
+			<div id="view-case">
+				<form id="view-case-form" novalidate>
+					<div>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+			</div>
+			<div id="cancel-case">
+				<form id="cancel-case-form">
+					<div>
+						<h2>Cancel cases</h2>
+					</div>
+					<button id="cancel-case-btn">View cases.</button>
+				</form>
+			</div>
+			<div id="add-witnesses">
+				<form id="add-witnesses-search-form" novalidate>
+					<div>
+						<h2>Add case witness</h2>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+				<form id="add-witnesses-form" method="POST">
+					<div>
+						<p>All fields marked <span class="required">*</span> are mandatory.</p>
+					</div>
+					<section>
+						<fieldset>
+							<label for="caseID-witness">Case ID</label>
+							<input type="text" name="caseID" required readonly id="caseID-price">
+						</fieldset>
+						<fieldset>
+							<label for="caseTitle-witness">Case Title</label>
+							<input type="text" name="caseTitle" readonly id="caseTitle-price">
+						</fieldset>
+						<fieldset>
+							<label for="witnessName-witness">Witness name</label>
+							<input type="text" name="witnessName" id="witnessName-witness" required autocomplete="off">
+						</fieldset>
+						<fieldset>
+							<label for="address-witness">Address</label>
+							<input type="text" name="address" id="address-witness" required autocomplete="off">
+						</fieldset>
+						<fieldset>
+							<label for="contact-witness">Contact</label>
+							<input type="tel" name="contact" id="contact-witness" required autocomplete="off">
+						</fieldset>
+						<fieldset>
+							<label for="email-witness">Email address</label>
+							<input type="email" name="email" id="email-witness" required autocomplete="off">
+						</fieldset>
+					</section>
+					<section>
+						<fieldset>
+							<input type="submit" name="add-witnesses" value="submit">
+						</fieldset>
+					</section>
+				</form>
+			</div>
+			<div id="view-witnesses">
+				<form id="view-witnesses-form" novalidate>
+					<div>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+			</div>
+			<div id="finalize-case">
+				<form id="finalize-case-form">
+					<div>
+						<h2>Finalize cases</h2>
+					</div>
+					<button id="finalize-case-btn">View cases.</button>
+				</form>
+			</div>
+			<div id="view-proceedings">
+				<form id="view-proceedings-form" novalidate>
+					<div>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+			</div>
+			<div id="view-costs">
+				<form id="view-costs-form">
+					<div>
+						<h2>View case costs</h2>
+					</div>
+					<button id="view-costs-btn">View cost.</button>
+				</form>
+			</div>
+			<div id="pay">
+				<form id="pay-search-form" novalidate>
+					<div>
+						<h2>Case Payment</h2>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+				<form id="pay-form" method="POST">
+					<div>
+						<p>All fields marked <span class="required">*</span> are mandatory.</p>
+					</div>
+					<section>
+						<fieldset>
+							<label for="caseID-pay">Case ID</label>
+							<input type="text" name="caseID" required readonly id="caseID-pay">
+						</fieldset>
+						<fieldset>
+							<label for="caseTitle-pay">Case Title</label>
+							<input type="text" name="caseTitle" readonly id="caseTitle-pay">
+						</fieldset>
+						<fieldset>
+							<label for="transID-pay">MPESA Transaction ID</label>
+							<input type="text" name="transID" id="transID-pay" required autocomplete="off">
+						</fieldset>
+						<fieldset>
+							<label for="amount-pay">Amount</label>
+							<input type="text" name="amount" id="amount-pay" required autocomplete="off">
+						</fieldset>
+					</section>
+					<section>
+						<fieldset>
+							<input type="submit" name="add-pay" value="submit">
+						</fieldset>
+					</section>
+				</form>
+			</div>
+			<div id="case-payment">
+				<form id="case-payment-form" novalidate>
+					<div>
+						<h2>Case payments</h2>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+			</div>
+			<div id="arranged-meetings">
+				<form id="arranged-meetings-form">
+					<div>
+						<h2>Arranged meetings</h2>
+					</div>
+					<button id="arranged-meetings-btn">View meetings.</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

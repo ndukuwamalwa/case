@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Superior Defence: Register</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="assets/css/app.css">
+	<script type="module" src="app/app.js"></script>
+</head>
+<body>
+	<div class="loader"></div>
+	<div class="container">
+		<div id="header">
+			<h1>Superior Defense</h1>
+		</div>
+		<div id="nav">
+			<ol id="main-menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="register.html">Register</a></li>
+				<li><a href="login.html">Login</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ol>
+		</div>
+		<div id="forms">
+			<div class="notification">
+				<div>
+					<h3></h3>
+					<p></p>
+				</div>
+				<div>
+					<i class="fa fa-close"></i>
+				</div>
+			</div>
+			<form class="form" id="register-form">
+				<div>
+					<h2>Client Registration</h2>
+					<p>All fields marked <span class="required">*</span> are mandatory</p>
+				</div>
+				<section>
+					<fieldset>
+						<label for="fname">First name<span class="required">*</span></label>
+						<input type="text" name="fname" id="fname" required autofocus autocomplete="Off">
+					</fieldset>
+					<fieldset>
+						<label for="lname">Family name<span class="required">*</span></label>
+						<input type="text" name="lname" id="lname" required autocomplete="Off">
+					</fieldset>
+					<fieldset>
+						<label for="mname">Other name(s)</label>
+						<input type="text" name="mname" id="mname">
+					</fieldset>
+					<fieldset>
+						<label for="dob">Date of Birth<span class="required">*</span></label>
+						<input type="date" name="dob" id="dob" required autocomplete="Off">
+					</fieldset>
+					<fieldset>
+						<label for="contact">Contact<span class="required">*</span></label>
+						<input type="tel" name="contact" required id="contact" autocomplete="Off">
+					</fieldset>
+					<fieldset>
+						<label for="email">Email address<span class="required">*</span></label>
+						<input type="email" name="email" id="email" required autocomplete="Off">
+					</fieldset>
+					<fieldset>
+						<label for="address">Address<span class="required">*</span></label>
+						<input type="address" name="address" id="address" required autocomplete="Off">
+					</fieldset>
+					<fieldset>
+						<label for="password">Password<span class="required">*</span></label>
+						<input type="password" name="password" id="password" required autocomplete="Off">
+					</fieldset>
+					<fieldset>
+						<label for="confirm">Confirm password<span class="required">*</span></label>
+						<input type="password" name="confirm" id="confirm" required autocomplete="Off">
+					</fieldset>
+				</section>
+				<section>
+					<fieldset>
+						<input type="submit" name="addclient" value="submit">
+					</fieldset>
+				</section>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

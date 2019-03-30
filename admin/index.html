@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Portal</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../assets/css/app.css">
+	<script type="module" src="../app/app.js"></script>
+	<script type="module" src="../app/admin.js"></script>
+</head>
+<body>
+	<button id="logout"><i class="fa fa-sign-out"></i>Logout</button>
+	<div class="loader"></div>
+	<div class="container">
+		<div id="admin-menu">
+			<div id="admin-profile">
+				<h2>Profile</h2>
+				<ol class="menu-list">
+					<li><a href="#dashboard" id="dash"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+					<li><a href="#update-profile" id="profile-menu"><i class="fa fa-refresh"></i>Update profile</a></li>
+					<li><a href="#view-profile"><i class="fa fa-eye"></i>View profile</a></li>
+					<li><a href="#add-contact"><i class="fa fa-plus"></i>Add contact</a></li>
+					<li><a href="#view-contacts"><i class="fa fa-phone"></i>View Contacts</a></li>
+					<li><a href="#add-academic-qualification"><i class="fa fa-plus"></i>Add education</a></li>
+					<li><a href="#view-education"><i class="fa fa-eye"></i>View education</a></li>
+				</ol>
+			</div>
+			<div id="employee-actions">
+				<h2>Employees</h2>
+				<ol class="menu-list">
+					<li><a href="#add-employee"><i class="fa fa-plus"></i>Add employee</a></li>
+					<li><a href="#view-employee"><i class="fa fa-eye"></i>View employee</a></li>
+					<li><a href="#delete-employee"><i class="fa fa-trash"></i>Delete employee</a></li>
+					<li><a href="#update-employee"><i class="fa fa-refresh"></i>Update employee</a></li>
+					<li><a href="#add-employee-education"><i class="fa fa-graduation-cap"></i>Add education</a></li>
+					<li><a href="#view-employee-eduaction"><i class="fa fa-eye"></i>View education</a></li>
+				</ol>
+			</div>
+			<div id="client-actions">
+				<h2>Clients</h2>
+				<ol class="menu-list">
+					<li><a href="#verify-client"><i class="fa fa-check"></i> Verify client</a></li>
+					<li><a href="#delete-client"><i class="fa fa-trash"></i> Delete client</a></li>
+				</ol>
+			</div>
+			<div id="case-actions">
+				<h2>Cases</h2>
+				<ol class="menu-list">
+					<li><a href="#applied-cases"><i class="fa fa-edit"></i>Applied cases</a></li>
+					<li><a href="#view-case"><i class="fa fa-eye"></i>View case</a></li>
+					<li><a href="#view-witnesses"><i class="fa fa-eye"></i>View witnesses</a></li>
+				</ol>
+			</div>
+			<div id="payment-actions">
+				<h2>Payments</h2>
+				<ol class="menu-list">
+					<li><a href="#view-payments"><i class="fa fa-eye"></i>View payments</a></li>
+					<li><a href="#search-payment"><i class="fa fa-search"></i>Search payments</a></li>
+					<li><a href="#confirm-payment"><i class="fa fa-check"></i>Confirm payment</a></li>
+				</ol>
+			</div>
+			<div id="salary-action">
+				<h2>Salaries</h2>
+				<ol class="menu-list">
+					<li><a href="#pay-salaries"><i class="fa fa-dollar"></i>Pay salary</a></li>
+					<li><a href="#view-prev-payments"><i class="fa fa-bar-chart"></i>Payment history</a></li>
+				</ol>
+			</div>
+			<div id="arranged-meetings-action">
+				<h2>Meetings</h2>
+				<ol class="menu-list">
+					<li><a href="#view-arranged-meetings"><i class="fa fa-eye"></i>Arranged meetings</a></li>
+					<li><a href="#cancel-arrangement"><i class="fa fa-close"></i>Cancel arrangement</a></li>
+				</ol>
+			</div>
+		</div>
+		<div id="top-nav">
+			<h3>Supreme Defense</h3>
+			<h5>Administrator Portal</h5>
+		</div>
+		<div id="content">
+			<div class="notification">
+				<div>
+					<h3></h3>
+					<p></p>
+				</div>
+				<div>
+					<i class="fa fa-close"></i>
+				</div>
+			</div>
+			<div id="dashboard">
+				<table>
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Users</td>
+							<td id="stat-users"></td>
+						</tr>
+						<tr>
+							<td>Applied cases</td>
+							<td id="stat-appliedCases"></td>
+						</tr>
+						<tr>
+							<td>Accepted cases</td>
+							<td id="stat-acceptedCases"></td>
+						</tr>
+						<tr>
+							<td>Won cases</td>
+							<td id="stat-wonCases"></td>
+						</tr>
+						<tr>
+							<td>Lost cases</td>
+							<td id="stat-lostCases"></td>
+						</tr>
+						<tr>
+							<td>Appealed cases</td>
+							<td id="stat-appealedCases"></td>
+						</tr>
+						<tr>
+							<td>Appealed cases</td>
+							<td id="stat-withdrawnCases"></td>
+						</tr>
+						<tr>
+							<td>Clients</td>
+							<td id="stat-clients"></td>
+						</tr>
+						<tr>
+							<td>Verified clients</td>
+							<td id="stat-verifiedClients"></td>
+						</tr>
+						<tr>
+							<td>Employees</td>
+							<td id="stat-employees"></td>
+						</tr>
+						<tr>
+							<td>Advocates</td>
+							<td id="stat-advocates"></td>
+						</tr>
+						<tr>
+							<td>Meetings arranged</td>
+							<td id="stat-meetingsArranged"></td>
+						</tr>
+						<tr>
+							<td>Done meetings</td>
+							<td id="stat-doneMeetings"></td>
+						</tr>
+						<tr>
+							<td>Awaiting meetings</td>
+							<td id="stat-awaitingMeetings"></td>
+						</tr>
+						<tr>
+							<td>Payments</td>
+							<td id="stat-payments"></td>
+						</tr>
+						<tr>
+							<td>Paid Amount</td>
+							<td id="stat-paidAmount"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="update-profile">
+				<form class="form" id="update-profile-form" method="POST" enctype="multipart/form-data">
+					<div>
+						<h2>Update profile</h2>
+						<p>All fields marked<span class="required">*</span> are mandatory</p>
+					</div>
+					<section>
+						<fieldset>
+							<label for="fname-profile">First name</label>
+							<input type="text" name="fname" required id="fname-profile">
+						</fieldset>
+						<fieldset>
+							<label for="mname-profile">Middle name</label>
+							<input type="text" name="mname" id="mname-profile">
+						</fieldset>
+						<fieldset>
+							<label for="lname-profile">Last name</label>
+							<input type="text" name="lname" required id="lname-profile">
+						</fieldset>
+						<fieldset>
+							<label for="email-profile">Email address</label>
+							<input type="email" name="email" required id="email-profile">
+						</fieldset>
+						<fieldset>
+							<label for="address-profile">Address</label>
+							<input type="address" name="address" required id="address-profile">
+						</fieldset>
+						<fieldset>
+							<label for="dob-profile">Date of Birth</label>
+							<input type="date" name="dob" id="dob-profile">
+						</fieldset>
+						<fieldset>
+							<label for="photo-profile">Profile picture</label>
+							<input type="file" name="photo" required id="photo-profile" accept="image/*">
+						</fieldset>
+					</section>
+					<section>
+						<fieldset>
+							<input type="submit" name="updateProfile" value="update profile">
+						</fieldset>
+					</section>
+				</form>
+			</div>
+			<div id="view-profile">
+				<form id="view-profile-form">
+					<div>
+						<h2>Profile</h2>
+					</div>
+					<button id="view-profile-btn">View</button>
+				</form>
+			</div>
+			<div id="add-contact">
+				<form method="POST" id="add-contact-form">
+					<div>
+						<h2>Add new contact</h2>
+					</div>
+					<section>
+						<fieldset>
+							<label for="contact-add">Enter contact</label>
+							<input type="tel" name="contact" required id="contact-add">
+						</fieldset>
+					</section>
+					<section>
+						<fieldset>
+							<input type="submit" name="add-contact" value="add">
+						</fieldset>
+					</section>
+				</form>
+			</div>
+			<div id="view-contacts">
+				<form id="view-contact-form">
+					<div>
+						<h2>Contacts</h2>
+					</div>
+					<button id="view-contact-btn">View</button>
+				</form>
+			</div>
+			<div id="add-academic-qualification">
+				<form method="POST" id="add-academic-qualification-form">
+					<div>
+						<h2>Add academic details</h2>
+						<p>All fields marked <span class="required">*</span> are mandatory.</p>
+					</div>
+					<section>
+						<fieldset>
+							<label for="specialization-edu">Field of specialization<span class="required">*</span></label>
+							<input type="text" name="specialization" required autocomplete="off" id="specialization-edu">
+						</fieldset>
+						<fieldset>
+							<label for="institution-edu">Institution<span class="required">*</span></label>
+							<input type="text" name="institution" required autocomplete="off" id="institution-edu">
+						</fieldset>
+						<fieldset>
+							<label for="achievement-edu">Award<span class="required">*</span></label>
+							<input type="text" name="achievement" required autocomplete="off" id="achievement-edu">
+						</fieldset>
+						<fieldset>
+							<label for="year-edu">Year of award<span class="required">*</span></label>
+							<input type="text" name="year" required autocomplete="off" id="year-edu" pattern="[0-9]{4}">
+						</fieldset>
+						<fieldset>
+							<label for="description-edu">Description<span class="required">*</span></label>
+							<textarea name="description" required autocomplete="off" id="description-edu"></textarea>
+						</fieldset>
+					</section>
+					<section>
+						<fieldset>
+							<input type="submit" name="add-education" value="submit">
+						</fieldset>
+					</section>
+				</form>
+			</div>
+			<div id="view-education">
+				<form id="view-education-form">
+					<div>
+						<h2>Academic achievements</h2>
+					</div>
+					<button id="view-education-btn">View</button>
+				</form>
+			</div>
+			<div id="add-employee">
+				<form method="POST" id="add-employee-form">
+					<div>
+						<h2>Add new employee</h2>
+						<p>All fields marked <span class="required">*</span> are mandatory.</p>
+					</div>
+					<section>
+						<fieldset>
+							<label for="fname-employee">First name</label>
+							<input type="text" name="fname" id="fname-employee" required autocomplete="off">
+						</fieldset>
+						<fieldset>
+							<label for="mname-employee">Middle name</label>
+							<input type="text" name="mname" id="mname-employee" autocomplete="off">
+						</fieldset>
+						<fieldset>
+							<label for="lname-employee">Last name</label>
+							<input type="text" name="lname" id="lname-employee" required autocomplete="off">
+						</fieldset>
+						<fieldset>
+							<label for="email-employee">Email address</label>
+							<input type="email" name="email" id="email-employee" required autocomplete="off">
+						</fieldset>
+						<fieldset>
+							<label for="address-employee">Physical address</label>
+							<input type="address" name="address" id="address-employee" required autocomplete="off">
+						</fieldset>
+						<fieldset>
+							<label for="empType-employee">Type of employee</label>
+							<div>
+								<input type="radio" name="empType" value="ADVOCATE" required id="empType-advocate"><label for="empType-advocate">Advocate</label>
+								<input type="radio" name="empType" value="JUNIOR STAFF" required id="empType-junior"><label for="empType-junior">Junior staff</label>
+								<input type="radio" name="empType" value="HELPER" required id="empType-helper"><label for="empType-helper">Support staff</label>
+							</div>
+						</fieldset>
+						<fieldset>
+							<label for="salary-employee">Salary</label>
+							<input type="text" name="salary" id="salary-employee" required autocomplete="off" pattern="[0-9]{1,}">
+						</fieldset>
+						<fieldset>
+							<label for="photo-employee">Photo</label>
+							<input type="file" name="photo" id="photo-employee" required autocomplete="off" accept="image/*">
+						</fieldset>
+					</section>
+					<section>
+						<fieldset>
+							<input type="submit" name="add-employee" value="submit">
+						</fieldset>
+					</section>
+				</form>
+			</div>
+			<div id="view-employee">
+				<form id="employee-view-search-form" novalidate>
+					<div>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+			</div>
+			<div id="delete-employee">
+				<form id="employee-delete-search-form" novalidate>
+					<div>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+			</div>
+			<div id="update-employee">
+				<form id="employee-update-search-form" novalidate>
+					<div>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+				<form method="POST" id="update-employee-form">
+					<div>
+						<h2>Update employee</h2>
+						<p>All fields marked <span class="required">*</span> are mandatory.</p>
+					</div>
+					<section>
+						<fieldset>
+							<label for="id-employee-update">Employee ID</label>
+							<input type="text" name="empID" required readonly>
+						</fieldset>
+						<fieldset>
+							<label for="fname-employee-update">First name</label>
+							<input type="text" name="fname" id="fname-employee-update" required> 
+						</fieldset>
+						<fieldset>
+							<label for="mname-employee-update">Middle name</label>
+							<input type="text" name="mname" id="mname-employee-update"> 
+						</fieldset>
+						<fieldset>
+							<label for="lname-employee-update">Last name</label>
+							<input type="text" name="lname" id="lname-employee-update" required> 
+						</fieldset>
+						<fieldset>
+							<label for="email-employee-update">Email address</label>
+							<input type="email" name="email" id="email-employee-update" required readonly>
+						</fieldset>
+						<fieldset>
+							<label for="address-employee-update">Physical address</label>
+							<input type="address" name="address" id="address-employee-update" required> 
+						</fieldset>
+						<fieldset>
+							<label for="empType-employee-update">Type of employee</label>
+							<div>
+								<input type="radio" name="empType" value="ADVOCATE" required id="empType-advocate-update"><label for="empType-advocate">Advocate</label>
+								<input type="radio" name="empType" value="JUNIOR STAFF" required id="empType-junior-update"><label for="empType-junior">Junior staff</label>
+								<input type="radio" name="empType" value="HELPER" required id="empType-helper-update"><label for="empType-helper">Support staff</label>
+							</div>
+						</fieldset>
+						<fieldset>
+							<label for="salary-employee-update">Salary</label>
+							<input type="text" name="salary" id="salary-employee-update" required pattern="[0-9]{1,}">
+						</fieldset>
+					</section>
+					<section>
+						<fieldset>
+							<input type="submit" name="update-employee" value="Update">
+						</fieldset>
+					</section>
+				</form>
+			</div>
+			<div id="add-employee-education">
+				<form id="employee-edu-search-form" novalidate>
+					<div>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+				<form method="POST" id="emp-edu-add-form">
+					<div>
+						<h2>Add academic details</h2>
+						<p>All fields marked <span class="required">*</span> are mandatory.</p>
+					</div>
+					<section>
+						<fieldset>
+							<label for="id-employee-emp">Employee ID</label>
+							<input type="text" name="empID" required readonly>
+						</fieldset>
+						<fieldset>
+							<label for="specialization-edu-emp">Field of specialization<span class="required">*</span></label>
+							<input type="text" name="specialization" required autocomplete="off" id="specialization-edu-emp">
+						</fieldset>
+						<fieldset>
+							<label for="institution-edu-emp">Institution<span class="required">*</span></label>
+							<input type="text" name="institution" required autocomplete="off" id="institution-edu-emp">
+						</fieldset>
+						<fieldset>
+							<label for="achievement-edu-emp">Award<span class="required">*</span></label>
+							<input type="text" name="achievement" required autocomplete="off" id="achievement-edu-emp">
+						</fieldset>
+						<fieldset>
+							<label for="year-edu-emp">Year of award<span class="required">*</span></label>
+							<input type="text" name="year" required autocomplete="off" id="year-edu-emp" pattern="[0-9]{4}">
+						</fieldset>
+						<fieldset>
+							<label for="description-edu-emp">Description<span class="required">*</span></label>
+							<textarea name="description" required autocomplete="off" id="description-edu-emp"></textarea>
+						</fieldset>
+					</section>
+					<section>
+						<fieldset>
+							<input type="submit" name="add-education" value="submit">
+						</fieldset>
+					</section>
+				</form>
+			</div>
+			<div id="view-employee-eduaction">
+				<form id="view-employee-edu-search-form" novalidate>
+					<div>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+			</div>
+			<div id="verify-client">
+				<form id="verify-client-form">
+					<div>
+						<h2>Verify client</h2>
+					</div>
+					<button id="verify-client-btn">View unverified clients.</button>
+				</form>
+			</div>
+			<div id="delete-client">
+				<form id="delete-client-form">
+					<div>
+						<h2>Delete client</h2>
+					</div>
+					<button id="delete-client-btn">View clients.</button>
+				</form>
+			</div>
+			<div id="applied-cases">
+				<form id="applied-case-form">
+					<div>
+						<h2>Applied cases</h2>
+					</div>
+					<button id="applied-case-btn">View cases.</button>
+				</form>
+			</div>
+			<div id="view-case">
+				<form id="view-case-form" novalidate>
+					<div>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+			</div>
+			<div id="view-witnesses">
+				<form id="view-witnesses-form" novalidate>
+					<div>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+			</div>
+			<div id="view-payments">
+				<form id="view-payments-form">
+					<div>
+						<h2>Payments</h2>
+					</div>
+					<button id="view-payments-btn">View payments.</button>
+				</form>
+			</div>
+			<div id="search-payment">
+				<form id="search-payment-form" novalidate>
+					<div>
+						<p>Enter keywords to search</p>
+					</div>
+					<fieldset>
+						<input type="search" name="keyword" required>
+					</fieldset>
+				</form>
+			</div>
+			<div id="confirm-payment">
+				<form id="confirm-payment-form">
+					<div>
+						<h2>Unconfirmed Payments</h2>
+					</div>
+					<button id="confirm-payment-btn">View payments.</button>
+				</form>
+			</div>
+			<div id="pay-salaries">
+				<form id="pay-salaries-form">
+					<div>
+						<h2>Salary payment</h2>
+					</div>
+					<button id="pay-salaries-btn">List employees.</button>
+				</form>
+			</div>
+			<div id="view-prev-payments">
+				<form id="view-prev-payments-form">
+					<div>
+						<h2>Recent salary payments</h2>
+					</div>
+					<button id="view-prev-payments-btn">View payments.</button>
+				</form>
+			</div>
+			<div id="view-arranged-meetings">
+				<form id="view-arranged-meetings-form">
+					<div>
+						<h2>Arranged meetings</h2>
+					</div>
+					<button id="view-arranged-meetings-btn">View meetings.</button>
+				</form>
+			</div>
+			<div id="cancel-arrangement">
+				<form id="cancel-arrangement-form">
+					<div>
+						<h2>Cancel arranged meetings</h2>
+					</div>
+					<button id="cancel-arrangement-btn">View meetings.</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

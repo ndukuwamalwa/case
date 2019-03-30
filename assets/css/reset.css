@@ -1,0 +1,20 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto";
+}
+:root{
+	--theme-color: rgba(10,0,0,.9);
+	--theme-text-color: #fff;
+	--link-color: #ff6600;
+}
+ol,li{
+	list-style-type: none;
+}
+*::selection{
+	background-color: var(--theme-color);
+	color: var(--theme-text-color);
+}
+body{
+	background-color: var(--theme-color);
+}
